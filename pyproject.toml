@@ -1,0 +1,15 @@
+[project]
+name = "loop-engineering"
+version = "0.1.0"
+description = "A Builder/Reviewer verification loop that iteratively writes a self-contained website explaining agent loops, logging every pass."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai>=2.48.0",
+    "python-dotenv>=1.2.2",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.6",
+]
