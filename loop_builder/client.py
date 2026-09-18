@@ -14,4 +14,4 @@ client = OpenAI(
 )
 
 BUILDER_MODEL = "openai/gpt-4o-mini"
-REVIEWER_MODEL = "anthropic/claude-3.5-haiku"
+REVIEWER_MODEL = "anthropic/claude-3-haiku"

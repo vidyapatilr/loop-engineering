@@ -1,0 +1,1 @@
+Created the first draft of a self-contained HTML page explaining agent loops, including definitions, reasons for use, potential issues, a simple inline diagram, and a worked example to clarify the concept for non-technical readers.

@@ -1,0 +1,1 @@
+Expanded the explanation of an agent loop, clarified technical terms, added detail to the worked example, and improved the diagram for clarity and visual appeal. This helps ensure a better understanding for non-technical readers.

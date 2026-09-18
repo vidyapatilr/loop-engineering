@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Agent Loops</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .diagram {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example {
+            background-color: #e2e2ff;
+            padding: 10px;
+            border-left: 5px solid #4a90e2;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Understanding Agent Loops</h1>
+    <p>An agent loop is a method used in artificial intelligence where a program sends information to a model, waits for a response, possibly performs some actions based on that response, and then repeats the process. The goal is to keep the conversation going until a specific condition is met or a task is completed.</p>
+
+    <h2>What is a Loop?</h2>
+    <p>In simple terms, a loop is like a repeated cycle. Imagine you are cooking. You check a recipe, follow the steps, and then check if the dish is finished. If not, you repeat some steps or adjust the recipe until it’s done. In an agent loop, this process involves:</p>
+    <ul>
+        <li>Sending context to a model (like asking a question).</li>
+        <li>Running any actions the model suggests (like getting ingredients).</li>
+        <li>Appending the results to keep track of what has been done.</li>
+        <li>Repeating this cycle until a final goal is achieved, like completing a meal).</li>
+    </ul>
+
+    <h2>Why Use an Agent Loop?</h2>
+    <p>You might wonder why we need this looping process instead of just asking a question once. The reasons include:</p>
+    <ul>
+        <li><strong>Detailed Exploration:</strong> It allows for deeper exploration of a topic, gathering more nuanced information over time.</li>
+        <li><strong>Dynamic Responses:</strong> The agent can adjust its responses based on previous interactions, providing a more personalized experience.</li>
+        <li><strong>Complex Tasks:</strong> Some tasks require multiple steps, which a single request might not fulfill adequately.</li>
+    </ul>
+
+    <h2>What Can Go Wrong?</h2>
+    <p>If not designed carefully, agent loops can lead to several issues:</p>
+    <ul>
+        <li><strong>Runaway Costs:</strong> Continuous requests might lead to higher costs if not monitored.</li>
+        <li><strong>Losing Track of Context:</strong> If the system cannot remember previous exchanges, it may lead to irrelevant results.</li>
+        <li><strong>No Verification:</strong> There may be no way to confirm the accuracy of the responses, resulting in misinformation.</li>
+    </ul>
+
+    <h2>Simple Diagram of an Agent Loop</h2>
+    <div class="diagram">
+        <p>Context &rarr; Model Response &rarr; Actions &rarr; Updated Context &rarr; Repeat</p>
+    </div>
+
+    <h2>Worked Example</h2>
+    <div class="example">
+        <p><strong>Example:</strong> Imagine an AI helping you plan a trip.</p>
+        <ol>
+            <li>You ask the AI, "What are some top destinations?"</li>
+            <li>The AI responds with options like Paris, NYC, and Tokyo.</li>
+            <li>You say, "Tell me more about Paris."</li>
+            <li>The AI gives you details on Paris.</li>
+            <li>You continue asking until you finalize your travel plans, like booking a flight.</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Understanding Agent Loops. All rights reserved.</p>
+    </footer>
+</body>
+</html>
