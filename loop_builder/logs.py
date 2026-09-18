@@ -1,5 +1,4 @@
-"""Two persistent logs carried across iterations, per the article's 'what stays in context'
-guidance: a research log (claims/sources used) and a change log (what changed and why).
+"""Two persistent logs carried across iterations: a research log (claims/sources used) and a change log (what changed and why).
 Keeping these as plain files (not stuffed back into every prompt in full) is the offload-to-disk
 technique — each iteration reads only what it needs from them."""
 
@@ -13,9 +12,13 @@ CHANGE_LOG = LOG_DIR / "change_log.md"
 def init_logs():
     LOG_DIR.mkdir(exist_ok=True)
     if not RESEARCH_LOG.exists():
-        RESEARCH_LOG.write_text("# Research Log\n\nClaims and sources used while building the site.\n\n")
+        RESEARCH_LOG.write_text(
+            "# Research Log\n\nClaims and sources used while building the site.\n\n"
+        )
     if not CHANGE_LOG.exists():
-        CHANGE_LOG.write_text("# Change Log\n\nWhat changed each iteration, and why.\n\n")
+        CHANGE_LOG.write_text(
+            "# Change Log\n\nWhat changed each iteration, and why.\n\n"
+        )
 
 
 def append_research(iteration: int, notes: str):

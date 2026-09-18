@@ -1,8 +1,8 @@
-"""Shared OpenRouter client setup — mirrors the pattern used in AgentAudit's evals/judges.py,
-but here we deliberately point Builder and Reviewer at two different model families so the
+"""We deliberately point Builder and Reviewer at two different model families so the
 Reviewer is never grading output produced by its own model (avoids self-grading bias)."""
 
 import os
+
 from dotenv import load_dotenv
 from openai import OpenAI
 
