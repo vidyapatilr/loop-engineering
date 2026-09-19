@@ -18,8 +18,13 @@ GOAL = """Build a single, self-contained HTML page that explains "agent loops" t
 non-technical reader: what a loop is (send context to a model, run any tool calls it asks
 for, append the results, repeat until done or a stopping condition is hit), why you'd want
 one instead of a single request, and what can go wrong if it isn't designed carefully
-(runaway cost, losing track of context, no way to verify the output). Include at least one
-simple inline diagram and one concrete worked example."""
+(runaway cost, losing track of context, no way to verify the output). Include a detailed inline 
+SVG diagram of the full loop cycle, showing each stage as adistinct labeled box 
+(Send context -> Model responds -> Run any tool calls -> Append results -> Check stopping condition), 
+connected by arrows that loop back from the last stage to the first. Use color or styling to make the 
+"stop" path visually distinct from the "continue" path. The diagram should be detailed enough to stand
+on its own, not just a decorative sketch. Do not include site-wide boilerplate that doesn't serve the explanation — no fake
+copyright notice, no placeholder navigation bar, no "About Us" or contact footer."""
 
 MAX_ITERATIONS = 5
 
@@ -28,12 +33,16 @@ SITE_FILE = ROOT / "site" / "index.html"
 ITERATIONS_DIR = ROOT / "iterations"
 
 
-def _save_iteration(n: int, html: str, change_summary: str, verdict: str, feedback: str):
+def _save_iteration(
+    n: int, html: str, change_summary: str, verdict: str, feedback: str
+):
     iter_dir = ITERATIONS_DIR / f"iteration_{n}"
     iter_dir.mkdir(parents=True, exist_ok=True)
     (iter_dir / "index.html").write_text(html)
     (iter_dir / "change_summary.txt").write_text(change_summary)
-    (iter_dir / "reviewer_verdict.txt").write_text(f"VERDICT: {verdict}\n\nFEEDBACK:\n{feedback}")
+    (iter_dir / "reviewer_verdict.txt").write_text(
+        f"VERDICT: {verdict}\n\nFEEDBACK:\n{feedback}"
+    )
 
 
 def run():
@@ -64,17 +73,27 @@ def run():
         print(f"  Feedback: {reviewer_feedback[:200]}")
 
         _save_iteration(
-            iteration, current_html, builder_result["change_summary"], verdict, reviewer_feedback
+            iteration,
+            current_html,
+            builder_result["change_summary"],
+            verdict,
+            reviewer_feedback,
         )
         append_research(iteration, builder_result["research_notes"])
-        append_change(iteration, builder_result["change_summary"], verdict, reviewer_feedback)
+        append_change(
+            iteration, builder_result["change_summary"], verdict, reviewer_feedback
+        )
 
         if verdict == "APPROVE":
             print(f"\nApproved after {iteration} iteration(s). Final page: {SITE_FILE}")
             break
     else:
-        print(f"\nHit the {MAX_ITERATIONS}-iteration cap without approval. Final page: {SITE_FILE}")
-        print("(This is the guardrail working as intended — a real project might flag this")
+        print(
+            f"\nHit the {MAX_ITERATIONS}-iteration cap without approval. Final page: {SITE_FILE}"
+        )
+        print(
+            "(This is the guardrail working as intended — a real project might flag this"
+        )
         print("for a human rather than silently accepting the last draft.)")
 
 

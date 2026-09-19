@@ -9,3 +9,6 @@ Claims and sources used while building the site.
 - "Model" definition and usage in artificial intelligence context.
 - Effectiveness of using loops in AI processes.
 
+## Iteration 1
+- none
+

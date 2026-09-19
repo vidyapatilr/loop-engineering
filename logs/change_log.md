@@ -21,3 +21,11 @@ What changed each iteration, and why.
 **Reviewer feedback:**
 This HTML page does an excellent job of explaining agent loops to a non-technical reader. It covers the key concepts clearly, provides a concrete example, and includes a simple diagram. The language is straightforward, and there is no unexplained jargon. The content accurately reflects the RESEARCH_NOTES provided. Well done!
 
+## Iteration 1
+**Change:** Created an HTML document that explains "agent loops" with a clear definition, benefits, potential issues, and a detailed SVG diagram illustrating the loop stages. This draft serves the purpose of explaining the concept to a non-technical reader.
+
+**Reviewer verdict:** APPROVE
+
+**Reviewer feedback:**
+The HTML page meets the requirements of the rubric. It provides a clear and concrete explanation of agent loops, including a detailed inline SVG diagram that visually depicts the distinct stages of the loop cycle and the stop/continue paths. The content is written in plain language without unexplained jargon, and it addresses the potential issues with agent loops as outlined in the RESEARCH_NOTES. The page is self-contained and focused on the topic at hand, without any extraneous boilerplate.
+
