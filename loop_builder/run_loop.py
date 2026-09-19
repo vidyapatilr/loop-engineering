@@ -18,12 +18,21 @@ GOAL = """Build a single, self-contained HTML page that explains "agent loops" t
 non-technical reader: what a loop is (send context to a model, run any tool calls it asks
 for, append the results, repeat until done or a stopping condition is hit), why you'd want
 one instead of a single request, and what can go wrong if it isn't designed carefully
-(runaway cost, losing track of context, no way to verify the output). Include a detailed inline 
-SVG diagram of the full loop cycle, showing each stage as adistinct labeled box 
-(Send context -> Model responds -> Run any tool calls -> Append results -> Check stopping condition), 
-connected by arrows that loop back from the last stage to the first. Use color or styling to make the 
-"stop" path visually distinct from the "continue" path. The diagram should be detailed enough to stand
-on its own, not just a decorative sketch. Do not include site-wide boilerplate that doesn't serve the explanation — no fake
+(runaway cost, losing track of context, no way to verify the output).
+
+For the diagram, keep it simple: a single bordered box containing one bold line of text
+showing the stage names separated by arrows, e.g. "Context -> Model Response -> Actions
+Taken -> Updated Context -> Repeat". Do not use SVG, shapes, or multi-box graphics for the
+diagram - a styled text line is all that's needed. Style the diagram box to fit its content 
+width rather than stretching across the full page, and left-align the text inside it.
+
+The page must include a concrete worked example with a specific, realistic scenario (an
+actual question, actual numbers or data, an actual tool being called and a specific result
+it returns) - not a restatement of the abstract stage names from the diagram or definition.
+Present it as numbered steps (1, 2, 3...). This example is required in every draft,
+including revisions - never drop it while making other changes.
+
+Do not include site-wide boilerplate that doesn't serve the explanation - no fake
 copyright notice, no placeholder navigation bar, no "About Us" or contact footer."""
 
 MAX_ITERATIONS = 5

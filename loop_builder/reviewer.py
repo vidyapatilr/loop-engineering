@@ -12,10 +12,13 @@ HTML yourself — you only critique what the Builder produced and decide whether
 
 Judge the HTML against this rubric:
 - Clarity: would a non-technical reader understand it without help?
-- Concrete example: does the worked example show actual loop mechanics — a specific
-  input, a tool call being made, a result coming back, and a check for whether to stop
-  or continue? A generic back-and-forth conversation without these elements should be
-  marked REVISE, not approved.
+- The page must include a concrete worked example that shows actual loop mechanics: a
+  specific input, a tool call being made, a result coming back, and a check for whether
+  to stop or continue. This example is required in every draft, including revisions —
+  never drop it while making other changes.
+- Label every diagram stage using a visible SVG <text> element positioned inside or below
+  its box. Do not use <title> alone for labels — that is an invisible hover tooltip and
+  will not be readable on the page.
 - Visual aid: does the diagram show the loop's distinct stages (context -> model ->
   tool calls -> results -> stop check) connected by arrows in a cycle, with the
   stop/continue paths visually distinguished? A generic or decorative image without

@@ -1,0 +1,72 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Understanding Agent Loops</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            margin: 20px;  
+            line-height: 1.6;  
+        }  
+        h1 {  
+            color: #333;  
+        }  
+        h2 {  
+            color: #555;  
+        }  
+        .diagram {  
+            border: 2px solid #000;  
+            text-align: center;  
+            padding: 10px;  
+            margin: 20px 0;  
+            font-weight: bold;  
+        }  
+        ol {  
+            padding-left: 20px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <h1>Understanding Agent Loops</h1>  
+    <p>An "agent loop" is a process in artificial intelligence where a system (called an agent) receives information, processes it (using a model), takes actions, updates its knowledge, and continues this cycle until a certain goal is reached. This method is often more effective than making a single request because it allows for deeper exploration of a problem and can address complex tasks requiring multiple steps to resolve.</p>  
+
+    <h2>Why Use an Agent Loop?</h2>  
+    <p>Using an agent loop can be beneficial because:</p>  
+    <ul>  
+        <li>It allows for continuous improvement of results through multiple iterations.</li>  
+        <li>It can tackle tasks that need refinement based on ongoing feedback.</li>  
+        <li>It helps maintain relevant context throughout the process.</li>  
+    </ul>  
+
+    <h2>Potential Issues with Poorly Designed Loops</h2>  
+    <p>If agent loops are not designed carefully, several problems can occur:</p>  
+    <ul>  
+        <li>Runaway costs if the agent keeps making requests without an endpoint.</li>  
+        <li>Losing important information over iterations.</li>  
+        <li>No verification mechanism for the results, leading to incorrect outputs.</li>  
+    </ul>  
+
+    <h2>Visualizing the Agent Loop</h2>  
+    <div class="diagram">  
+        Context → Model Response → Actions Taken → Updated Context → Stop Check → Repeat  
+    </div>  
+
+    <h2>Concrete Example: Planning a Dinner Party</h2>  
+    <p>Here's a simple example of an agent loop in action:</p>  
+    <ol>  
+        <li><strong>Context:</strong> You want to plan a dinner party for 4 people and need help selecting a menu.</li>  
+        <li><strong>Model Response:</strong> The agent suggests a “Pasta and Salad” menu.</li>  
+        <li><strong>Actions Taken:</strong> You ask the agent for recipes for Pasta and Salad.</li>  
+        <li><strong>Updated Context:</strong> The agent knows you need specific recipes for the menu items.</li>  
+        <li><strong>Model Response:</strong> The agent retrieves recipes and suggests “Spaghetti Aglio e Olio” and “Caesar Salad.”</li>  
+        <li><strong>Actions Taken:</strong> You ask for a shopping list based on these recipes.</li>  
+        <li><strong>Agent Response:</strong> The agent provides the shopping list: “Pasta, Garlic, Olive oil, Romaine Lettuce, Caesar dressing.”</li>  
+        <li><strong>Stop Check:</strong> You review the shopping list. If it’s satisfactory, you proceed; if not, you can ask for adjustments.</li>  
+        <li><strong>Final Actions:</strong> You finalize the shopping list for your dinner party.</li>  
+    </ol>  
+
+    <p>This example demonstrates how an agent loop helps refine outputs by iterating through steps and checking for stop conditions, enabling you to effectively plan your dinner party.</p>  
+</body>  
+</html>

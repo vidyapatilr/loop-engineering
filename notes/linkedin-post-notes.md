@@ -50,3 +50,45 @@ Running list of real observations from building this, for the writeup.
   prompt design - even a single-purpose content-generation loop inherits the model's
   learned habits about what a "complete" output looks like, and the loop designer has to
   explicitly rule those out rather than assuming the model will only do what was asked.
+
+## The Reviewer hallucinated verification it never actually did (strongest finding)
+- After tightening the rubric, the Builder's very first draft was APPROVED with zero
+  revision - and the page was worse than the earlier version: the worked example was
+  completely absent, and the diagram's stage labels were invisible.
+- Root cause of the invisible labels: the Builder used SVG <title> (a hover tooltip,
+  never rendered visibly) instead of <text> for the box labels. It "labeled" the boxes
+  in the markup, just not in a way that shows on screen.
+- The Reviewer's approval message explicitly claimed the page "includes a concrete
+  example" and the diagram "clearly shows the distinct stages" - neither was true.
+- Why: the Reviewer only ever reads raw HTML/SVG source text. It never sees a rendered
+  page. It reasoned from the presence of a label string in the markup and concluded it
+  was "shown," with no way to know a <title> tag is invisible to an actual viewer.
+- This is the sharpest example of the article's own "reward hacking" / verification-debt
+  warning: a text-based LLM judge can be fully confident and articulate about a claim
+  that is simply false, because it is verifying against the wrong artifact (source code)
+  for a question that's actually about the rendered result. A judge's confidence is not
+  evidence.
+- Practical fix for a "real" system: either render the page (e.g. headless browser
+  screenshot) and have the Reviewer look at the rendered image, not just the source, or
+  add a deterministic/rule-based check (e.g. "reject any <title> used as a label
+  substitute") alongside the LLM judge - matching the article's point that loops often
+  need BOTH a deterministic guardrail AND an LLM judge, not just one.
+
+## Closing lesson: not every task is a good fit for a self-correcting loop
+- After tightening the Reviewer's rubric to demand a "detailed" SVG diagram, the diagram
+  broke in a NEW way on almost every subsequent run: invisible labels (<title> instead of
+  <text>), then an unconstrained size that blew up the page, then the diagram's position
+  shuffled in the page, then arrows that crossed randomly with a disconnected box.
+- Each fix addressed the specific failure from the last run, but the loop never converged
+  on a genuinely good diagram - it kept trading one problem for a different one.
+- Why: precise SVG geometry (box positions, line coordinates, label placement) is a task
+  neither side of the loop can actually verify by looking at it. The Builder writes
+  coordinates blind, without ever seeing the rendered result; the Reviewer reads the same
+  raw markup, also without ever seeing it rendered. Two blind participants can't catch
+  what only becomes obvious once you look at the actual page.
+- Decision: stop iterating on the diagram through the loop and hand-place a simple,
+  known-good flowchart instead, keeping the loop for what it's actually good at (the
+  prose content: clarity, examples, jargon).
+- This is the real, honest closing point for the post: knowing when to stop trusting a
+  loop to self-correct - and recognizing which tasks are and aren't a good fit for one -
+  is itself the skill, not just building the loop in the first place.

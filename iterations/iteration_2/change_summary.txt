@@ -1,1 +1,1 @@
-Expanded the explanation of an agent loop, clarified technical terms, added detail to the worked example, and improved the diagram for clarity and visual appeal. This helps ensure a better understanding for non-technical readers.
+I replaced the text-based diagram with a clearer graphical representation of the agent loop stages, added a specific tool call and result to the example, and clarified the terminology to make it more accessible to a non-technical reader.

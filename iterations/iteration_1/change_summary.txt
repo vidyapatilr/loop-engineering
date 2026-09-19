@@ -1,1 +1,1 @@
-Created an HTML document that explains "agent loops" with a clear definition, benefits, potential issues, and a detailed SVG diagram illustrating the loop stages. This draft serves the purpose of explaining the concept to a non-technical reader.
+Created a self-contained HTML page explaining the concept of "agent loops," including a clear diagram and a concrete worked example with numbered steps for better understanding.

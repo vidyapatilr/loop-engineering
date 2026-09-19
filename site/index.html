@@ -8,87 +8,63 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            line-height: 1.6;
+        }
+        .diagram {
+            border: 2px solid #000;
+            padding: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .example {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-left: 4px solid #007BFF;
         }
         h1, h2 {
-            color: #5a6c92;
-        }
-        #diagram {
-            margin-top: 20px;
-        }
-        .box {
-            fill: #f9f9f9;
-            stroke: #5a6c92;
-            stroke-width: 2;
-        }
-        .arrow {
-            marker-end: url(#arrowhead);
-            stroke: #5a6c92;
-            stroke-width: 2;
-        }
-        .stop-path {
-            fill: #ffcccb;
-        }
-        .continue-path {
-            fill: #cce5ff;
+            color: #333;
         }
     </style>
 </head>
 <body>
     <h1>Understanding Agent Loops</h1>
-    <p>An "agent loop" is a process used in advanced systems where a model (like a computer program) repeatedly sends and receives information. This allows the model to refine its responses based on ongoing context until it reaches a conclusion or a specified stopping point.</p>
+    <p>An agent loop is a process where information is sent to a model, actions are taken based on the model's outputs, and the results are fed back into the model until a goal is reached. This is different from a single request because it allows for more complex tasks to be handled step-by-step, ensuring better accuracy and context retention.</p>
     
-    <h2>What is a Loop?</h2>
-    <p>A loop consists of several steps:</p>
-    <ol>
-        <li><strong>Send Context:</strong> Provide the model with information relevant to the task.</li>
-        <li><strong>Model Responds:</strong> The model generates a response based on the context.</li>
-        <li><strong>Run Tool Calls:</strong> If the model suggests using tools, those actions are executed.</li>
-        <li><strong>Append Results:</strong> The results from these actions are added to the ongoing context.</li>
-        <li><strong>Check Stopping Condition:</strong> Evaluate whether to continue looping or stop.</li>
-    </ol>
-    
-    <h2>Benefits of Using an Agent Loop</h2>
-    <p>Agent loops are beneficial because they allow for more dynamic and adaptive responses. Instead of seeking a single answer, the loop helps the model learn and evolve with each cycle, leading to more accurate and context-aware outcomes.</p>
+    <div class="diagram">
+        Context -> Model Response -> Actions Taken -> Updated Context -> Check Stopping Condition -> Repeat
+    </div>
 
-    <h2>Potential Issues with Agent Loops</h2>
-    <p>If not designed carefully, agent loops can encounter problems such as:</p>
+    <h2>Why Use an Agent Loop?</h2>
+    <p>Using an agent loop instead of a single request can help in several ways:</p>
     <ul>
-        <li><strong>Runaway Costs:</strong> Continuous loop executions may lead to excessive resource usage.</li>
-        <li><strong>Losing Track of Context:</strong> Important information may be forgotten if not managed well.</li>
-        <li><strong>No Way to Verify Output:</strong> Results may become unreliable without a clear way to check accuracy.</li>
+        <li><strong>Improved Accuracy:</strong> Repeatedly updating context can refine results.</li>
+        <li><strong>Complex Tasks:</strong> Break down large questions into manageable steps.</li>
+        <li><strong>Context Retention:</strong> Maintain critical details throughout interactions.</li>
     </ul>
 
-    <h2>Diagram of the Agent Loop Cycle</h2>
-    <div id="diagram">
-        <svg width="600" height="400">
-            <defs>
-                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
-                    <polygon points="0,0 5,3 0,6" class="arrow" />
-                </marker>
-            </defs>
-            <rect x="20" y="20" width="120" height="60" class="box" />
-            <text x="80" y="50" text-anchor="middle" fill="#333">Send Context</text>
-            
-            <rect x="160" y="20" width="120" height="60" class="box" />
-            <text x="220" y="50" text-anchor="middle" fill="#333">Model Responds</text>
-            
-            <rect x="300" y="20" width="120" height="60" class="box" />
-            <text x="360" y="50" text-anchor="middle" fill="#333">Run Tool Calls</text>
-            
-            <rect x="440" y="20" width="120" height="60" class="box" />
-            <text x="500" y="50" text-anchor="middle" fill="#333">Append Results</text>
-            
-            <rect x="580" y="20" width="120" height="60" class="box" />
-            <text x="640" y="50" text-anchor="middle" fill="#333">Check Stopping Condition</text>
-            
-            <line x1="140" y1="50" x2="160" y2="50" class="arrow continue-path" />
-            <line x1="280" y1="50" x2="300" y2="50" class="arrow continue-path" />
-            <line x1="420" y1="50" x2="440" y2="50" class="arrow continue-path" />
-            <line x1="620" y1="50" x2="640" y2="50" class="arrow stop-path" />
-            <line x1="640" y1="50" x2="20" y2="50" class="arrow continue-path" />
-        </svg>
+    <h2>What Can Go Wrong?</h2>
+    <p>If not designed carefully, agent loops can lead to:</p>
+    <ul>
+        <li><strong>Runaway Costs:</strong> If a loop runs too many times, it can become expensive.</li>
+        <li><strong>Losing Context:</strong> Important information might be forgotten between steps.</li>
+        <li><strong>No Verification:</strong> Outputs might not be validated, leading to incorrect results.</li>
+    </ul>
+
+    <h2>Worked Example</h2>
+    <div class="example">
+        <h3>Scenario: Planning a Dinner Party</h3>
+        <p>Let's say you want to plan a dinner party for 5 people with a budget of $150.</p>
+        <ol>
+            <li><strong>Context:</strong> You start with the information: “Plan a dinner party for 5 people with a budget of $150.”</li>
+            <li><strong>Model Response:</strong> The model suggests: “Buy ingredients for pasta, salad, and dessert for $120.”</li>
+            <li><strong>Actions Taken:</strong> You decide to buy pasta ($30), salad ingredients ($25), and a dessert mix ($15).</li>
+            <li><strong>Updated Context:</strong> Now you have: “Spent $70 on the main ingredients, with $80 remaining.”</li>
+            <li><strong>Check Stopping Condition:</strong> You review the $80 remaining and decide the menu still needs drinks and a backup dish, so you continue rather than stop.</li>
+            <li><strong>Repeat:</strong> You ask the model: “What else can I buy with $80?” The model suggests additional drinks and snacks.</li>
+        </ol>
+        <p>This cycle repeats, checking the stopping condition each time, until the $150 budget is allocated and the menu is finalized — at that point the stopping condition is met and the loop ends.</p>
     </div>
 </body>
 </html>

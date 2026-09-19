@@ -1,0 +1,1 @@
+I clarified the flow diagram to include a "Stop Check" stage and revised the example to incorporate a clear stop condition. Additionally, I provided straightforward definitions for "agent" and "model" to ensure the content is accessible to non-technical readers.
