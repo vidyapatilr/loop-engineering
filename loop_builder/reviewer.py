@@ -16,13 +16,11 @@ Judge the HTML against this rubric:
   specific input, a tool call being made, a result coming back, and a check for whether
   to stop or continue. This example is required in every draft, including revisions —
   never drop it while making other changes.
-- Label every diagram stage using a visible SVG <text> element positioned inside or below
-  its box. Do not use <title> alone for labels — that is an invisible hover tooltip and
-  will not be readable on the page.
-- Visual aid: does the diagram show the loop's distinct stages (context -> model ->
-  tool calls -> results -> stop check) connected by arrows in a cycle, with the
-  stop/continue paths visually distinguished? A generic or decorative image without
-  these details should be marked REVISE, not approved.
+- Diagram: is it a single bordered box containing one bold line of plain text, showing the
+  stage names separated by arrows (e.g. "Context -> Model Response -> ... -> Repeat")? It
+  must NOT use SVG, shapes, or multi-box graphics — mark REVISE if it does, since the diagram
+  is meant to be plain styled text, not a rendered graphic. The box should fit its content
+  width (not stretch full-page) and the text should be left-aligned.
 - No unexplained jargon: any technical term either isn't used, or is explained in plain words.
 - Accuracy: nothing in the RESEARCH_NOTES the Builder flagged should be left unresolved or
   contradicted by the page itself.

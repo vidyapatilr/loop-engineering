@@ -2,7 +2,8 @@
 
 A minimal Builder/Reviewer verification loop, built to explore "loop engineering" — using a second, independent LLM as an automated judge inside an agentic loop, and where that judge can quietly fail.
 
-The loop writes a single self-contained HTML page that explains what an agent loop is to a non-technical reader. That's the test task; the actual subject of this repo is the loop itself, and what went wrong while building it. The full write-up of the failures below is in the companion LinkedIn post [link].
+The loop writes a single self-contained HTML page that explains what an agent loop is to a non-technical reader. That's the test task; the actual subject of this repo is the loop itself, and what went wrong while building it. The full write-up of the failures below is in the companion LinkedIn post 
+[https://www.linkedin.com/feed/update/urn:li:activity:7507130824484589568/].
 
 ## How it works
 
